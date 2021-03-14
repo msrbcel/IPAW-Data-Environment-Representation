@@ -1,0 +1,43 @@
+
+	{
+	  "dataenvironemnts_namespaces": {
+		"global": "http://global-env.com/",
+			"open": "http://global-env.com/open/",
+				"open": "open_attribute_1",
+				"open": "open_attribute_2",
+							.
+							.
+				"open": "open_attribute_n",
+			"lab1": "http://global-env.com/lab1/",
+				"lab1": "foo",
+				"lab1": "bar",
+			"lab2": "http://global-env.com/lab2/",
+										.
+										.	
+			"labn": "http://global-env.com/lab2/",
+			
+			"bu": "http://global-env.com/bu/",
+				"bu": "gond_attribute_1",
+							.
+							.
+				"bu": "gond_attribute_n",
+					"nrds": "http://global-env.com/bu/nrds/",
+									.
+									.
+			
+			"gond": "http://global-env.com/gond/",
+				"gond": "gond_attribute_1",
+				"gond": "gond_attribute_2",
+							.
+							.
+				"gond": "gond_attribute_n",
+	  },
+	   "wasInformedBy": {
+		"_:Infm2": {
+		  "prov:informed": "nrds:10",
+		  "prov:informant": "gond:08"
+		},
+		.......
+		...............
+	
+	

@@ -1,0 +1,53 @@
+https://jsoneditoronline.org/#left=local.xozuwi&right=local.zewapa
+{
+  "global: https://....../global/": {
+    "attributes": {
+      "attribute:1": "foo",
+      "attribute:2": "bar"
+    },
+    "open:https://....../global/open/": {
+      "attributes": {
+        "attribute:1": "foo-x",
+        "attribute:2": "bar-y",
+        "...:...": "...."
+      }
+    },
+    "lab1:https://....../global/lab1/": {
+      "attributes": {
+        "attribute:1": "foo-x",
+        "attribute:2": "bar-y",
+        "...:...": "...."
+      }
+    },
+    "lab2:https://....../global/lab2/": {
+      "attributes": {
+        "attribute:1": "foo-x",
+        "attribute:2": "bar-y",
+        "...:...": "....",
+        "...:....": "...."
+      }
+    },
+    "bu:https://....../global/bu/": {
+      "attributes": {
+        "attribute:1": "foo-x",
+        "attribute:2": "bar-y",
+        "...:...": "....",
+        "...:....": "...."
+      },
+      "nrds:https://....../global/bu/nrds/": {
+        "attributes": {
+          "attribute:1": "........",
+          "attribute:2": "............"
+        }
+      }
+    },
+    "gond:https://....../global/gond/": {
+      "attributes": {
+        "attribute:1": ".....",
+        "attribute:2": ".......",
+        "...:...": "...................",
+        "...:....": "............................"
+      }
+    }
+  }
+}

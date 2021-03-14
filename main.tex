@@ -1,0 +1,109 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{soul,color}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{academicons}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{longtable}
+\usepackage{multirow}
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{xcolor,colortbl}
+\definecolor{Gray}{gray}{0.85}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{academicons}
+\usepackage[hidelinks]{hyperref}
+\usepackage{rotating}
+\usepackage{tikzsymbols}
+\usepackage{ragged2e}
+%\usepackage{lscape} % to write pages in landscape environment
+\usepackage{array, threeparttable} % to add footnotes to the tables
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{caption} % to create some space between table caption and table, otherwise there was no space
+\captionsetup[table]{skip=5pt}
+\hypersetup{pdfstartview={XYZ null null 1.00}}
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+%\setlength\defaultaddspace{0.66ex}
+
+\lstset{escapeinside={<@}{@>}}
+
+
+\begin{document}
+
+\title{Provenance, Anonymisation and Data Environments: a Unifying Construction  
+%1. Data Environment Representation and Limitation of Existing PROV 
+%2. Data Environment Representation using Provenance for Anonymisation Decision-Making
+%\thanks{Supported by organization x.}
+}
+
+
+\author {Muhammad Aslam Jarwar\inst{1}\orcid{0000-0002-5332-1698}  
+\and
+Adriane Chapman\inst{2}\orcid{0000-0002-3814-2587} \and 
+Mark Elliot\inst{1} \orcid{0000-0002-3142-4493}\and 
+Fatemeh Raji\inst{2}\orcid{0000-0001-6130-7135}}
+%
+\authorrunning{Jarwar et al.}
+\newcommand{\titleText}{Provenance, Anonymisation and Data Environments:a Unifying Construction}
+\titlerunning{\titleText}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{University of Manchester, Manchester M13 9PL, UK \\
+\email{\{aslam.jarwar, mark.elliot\}@manchester.ac.uk}\\
+\and
+University of Southampton, Southampton, SO17 1BJ, UK\\
+\email{\{adriane.chapman, f.raji\}@soton.ac.uk}}
+% 
+\maketitle              % typeset the header of the contribution
+%
+\setcounter{footnote}{0}
+\begin{abstract}
+The Anonymisation Decision-making Framework (ADF) operationalizes the management of the risk of data exchange between organizations and environments. In its second edition the ADF has increased its emphasis on modelling data flows, highlighting a potential new use for provenance information: to support the  determination of risk of data exchange. We provide a real use case that showcases this functionality. Based on this use case, we identify the requirements for provenance information such that it can be utilized within the ADF, and identify a currently un-met requirement: the modelling of \textit{data environments}. We show how data environments can be implemented within the W3C PROV in three different ways. We analyze each approach for costs and benefits, as well as checking them against a second real use case for completeness. We summarize our findings and suggest ways forward for representing data environments within W3C PROV to underpin the automation of the ADF.
+
+\keywords{Data Environment Representation \and Anonymisation Decision-Making Framework \and Data Provenance \and W3C PROV-DM}
+\end{abstract}
+%
+%
+%
+%\pagebreak
+\input{intro}
+\input{usecase}
+\input{impl}
+\input{analysis}
+\input{relwork}
+\input{discussion}
+\input{concl}
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+\end{document}
+
+
+
+%\begin{thebibliography}{8}
+%\bibitem{ref_article1}
+%Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+
+%\bibitem{ref_lncs1}
+%Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+%F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+%Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+
+%\bibitem{ref_book1}
+%Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+%Location (1999)
+
+%\bibitem{ref_proc1}
+%Author, A.-B.: Contribution title. In: 9th International Proceedings
+%on Proceedings, pp. 1--2. Publisher, Location (2010)
+
+%\bibitem{ref_url1}
+%LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
+%Oct 2017
+%\end{thebibliography}

@@ -1,0 +1,248 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{soul,color}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{academicons}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\lstset{escapeinside={<@}{@>}}
+
+
+\begin{document}
+
+\title{Provenance, Anonymisation and Data Environments: a Unifying Construction
+%1. Data Environment Representation and Limitation of Existing PROV 
+%2. Data Environment Representation using Provenance for Anonymisation Decision-Making
+%\thanks{Supported by organization x.}
+}
+
+\author{Aslam\inst{1}\orcidID{0000-0002-5332-1698} \and
+Author\inst{2,3}\orcidID{1111-2222-3333-4444} \and
+Author\inst{3}\orcidID{2222--3333-4444-5555}}
+%
+\authorrunning{Jarwar et al.}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{University of Manchester, Manchester M13 9PL, UK 
+\email{\{aslam.jarwar,mark.elliot\}@manchester.ac.uk}\\
+\and
+University of Southampton, Southampton, SO17 1BJ, UK\\
+\email{\{abc,lncs\}@soton.ac.uk}}
+%
+\maketitle              % typeset the header of the contribution
+%
+\setcounter{footnote}{0}
+\begin{abstract}
+Abstract will be here
+
+\keywords{Data Environment Representation \and Anonymisation Decision-Making Framework \and Data Provenance \and W3C PROV-DM}
+\end{abstract}
+%
+%
+%
+%\pagebreak
+\section{Introduction}
+The concept of the \textit{data environment} dates back the 2000s and in particular the work of Elliot et al.\cite{elliot2010data}, who ran the \textit{data environment analysis service} as a support system for the 2011 UK census in the broader context of data confidentiality and disclosure control \cite[see eg][]{willenborg2012elements,duncan2011concepts,hundepool2012SDC} and in particular re-identification risk assessment \cite [see eg][]{chen1998, skinner1998estimating,skinner2002measure}. The critical point underlying the concept is that disclosure risk resides not in the data themselves but in the relationship between the data and their environment.  Mackey and Elliot define the data environment as "the set of formal and informal structures, processes, mechanisms and agents that either: (i) act on data; (ii) provide interpretable context for that data or (iii) define, control and/ or interact with that data "\citep[p no]{mackey2013understanding}. 
+Data environments come in multiple types: For example, the open data environment, an end-user license management data environment, and restricted access secure data environments, etc. However all in environemnts can be described through four descriptive features: other data, agents, infrastructure, and governance. 
+
+It follows from the foregoing that in order to apply the appropriate anonymisation processes, one needs to take account of both data and their environment. Elliot et al. \cite{elliot2020anonymisation} developed the \textit{Anonymisation Decision-Making Framework (ADF)} to operationalise exactly such a process. The ADF emphasizes that the appropriate anonymisation decisions about a given set of data are only be possible by considering the relationship between the data and their environment(s) which they call the \textit{data situation}.  Data situations are often dynamic in that data moves between their environment and so understanding their complexity and therfore the risk and its management through anonymisation requires an awareness of and capacity to map data flows between environments. 
+
+W3C PROV is an interoperability standard for provenance \cite{missier2013w3c}. PROV provides the abstract data model that includes actors, entities, activities, and relationship properties among them. Using provenance (as described by PROV), it is possible to trace where data came from, and how it was processed.
+In W3C prov data model Bundles, Collections, Entities, Activities, and Agents are candidates for representing data environments. Because, in principle, the elements of PROV (i.e. entity, bundle, collection, agent, activity) can be mapped with the data environment elements (agents, other data, infrastructure,  governance). However, there are limitations to representing data situations in this way and as we will show PROV needs the extending to fully represent the required features. 
+
+In this paper we outline and evaluate three possible extensions to the W3C PROV abstract data model to enable the representation of data environemnts. \textcolor{red}{x , y, z}. The remainder of the paper is structured as follows. In section 2 we describe the background and related work. The data environment representation requirements and W3C PROV extension approaches in section \ref{requirements} and \ref{approaches} respectively. The main contributions of our article are:
+
+\begin{itemize}
+\item  A
+\item  B
+\item  C
+\end{itemize}
+
+\section{Background and Related Work}
+\subsection{Provenance in Confidentiality and Anonymisation}
+%\subsection{ADF and Data Environment}
+\begin{comment}
+
+
+\subsection{PROV Structure}
+
+PROV is a W3C standard for the representation of  workflow that contains information about the provenance of some data and about influences on those state of that data \cite{PROV-DM15} . Here data can be of any form and used for any task. PROV is not provenance \textit{per se}. Provenance is a general concept connoting a type of metadata that describes the people, organization, resources, and activities involved in the generation or transportation of data (or other entities). PROV is an engineering approach for representing provenance in the machine-readable format.   
+The PROV data model (PROV-DM) contains seven components covering the various core aspects of provenance. These are:
+\begin{itemize}
+\item \textbf{Entities} and related metadata. For example, creation time, type of entity such as physical, digital, real or imaginary. Thing and object terminologies are also used for an entity.
+\item \textbf{Activities} and related metadata. For example, activity started and ending time, etc.
+\item \textbf{Agents} that take ownership and responsibilities for entities and activities respectively. In some use cases agent might be used as a type of entity or activity. For example, volunteers in the clinical trials that injected with vaccine or placebo might be expressed as agents.
+\item \textbf{Bundles} that are used to describe the provenance of provenance.  Bundles itself are entities.  
+\item \textbf{Collections} are type of entities which describe the provenance of similar entities that have some logical relation. Collections only used to logically represent the same entities as array in the programming language. As the array data structure cannot contain multiple type of variables.   
+\item \textbf{Derivations} are a kind of transformation from one entity to another. The derivation could be the new entity in result of update to the existing entity or creation of new entity by extracting few features from the existing one.  
+\item \textbf{Alternate} Entities presents the aspect of same thing. For example, two data scientists extracted the features from the same dataset and created new datasets for their purposes. The alternate entities relationships can be represented with AlternateOf and SpecializationOf properties. 
+\end{itemize}
+
+PROV representation formalisms has been explained in twelve family of documents including eight note\footnote{Note documents doesn’t imply endorsement by the W3C and are not considered as stable. This type of document might be updated, obsoleted at any time. Therefore, it is inappropriate to refer these in other documents.}  documents and four recommendation\footnote{According to W3C recommendation document is considered as stable document and might be cited in other documents. The importance of recommendation document is that the interested parties have been agreed on the contents and reviewed and endorsed by the W3C members.}  documents. Prov-Overview, Prov-Primer, Prov-XML, Prov-AQ, Prov-Dictionary, Prov-DC, Prov-Sem and Prov-Links were categorized as note document. Whereas Prov-DM, Prov-N, Prov-Constraints and Prov-O were classified as recommendation document. 
+Prov-Overview document provides a general overview of PROV notes and recommendation documents. Prov-Primer document provides the basic introductory concepts, simple examples and usage guidelines of prov data model. PROV-XML document elaborates the XML schema for the prov data model. It highlights the several XML design principals to supports the serialization of prov data model in XML. Prov-AQ document is categorized as note document. This document described the provenance accessing and querying mechanism for complex deployment as well as services to access provenance records associated with web pages. Prov-Dictionary document introduced special type of collections in the form of key-entity pairs for the provenance of dictionary data structure. Conceptually map, associated lists, relational tables, ordered lists, etc are considered as dictionary data structure and generally these are managed and modified through insertions and deletions. Moreover key-entity pair provenance representation mechanism is considered as central role in the Prov-Dictionary document. 
+
+Prov-DC document provides the partial mapping from provenance terms defined in the Dublin Core vocabulary to prov data model’s ontology. Prov-Sem document presents the prov data model statements as atomic formulas using first-order logic notations and viewing the prov statement and constraints as first-order theory. The prov statements in first-order logic is useful for the development of new constraints and validation of provenance document. Prov-Links documents introduced the mechanism to link multiple provenance description together. For example, multiple stakeholders have created the provenance over time and later they want to link this information together. The process in this document assume that the provenance is represented through bundles. The recommendations Prov-DM, Prov-N, Prov-Constraints and Prov-O have respectively described the prov conceptual model, the prov notation, the prov constraint and prov ontology. In the prov family documents, the note documents are the supporting documents for the recommendation documents. The provided mechanism (i.e. implementation) in the note documents might be materialized in many ways. Also, in the recommendation documents Prov-O document provides the mapping of prov data model in the ontology formalism. By considering the above discussion, we understand/assume that the extension and updation in the concepts and mechanism described in the recommendation documents for the data environment representation requirements can easily be reflected in the supporting documents. Therefore, we are limiting our study to the PROV-DM, PROV-N, and PROV-CONSTRAINTS.   
+\end{comment}
+
+\section{Requirements for representing Data Environments }\label{requirements}
+\subsection{Use Case Specific Provenance Requirements}
+The representation of the data environment is used to get the data situation information when the data flows within an environment or from one environment to another. This information will be used in the ADF for data sharing risk analysis. Therefore, the W3C PROV enabled data environment representation (i.e provenance graph) should be able to answer that:
+
+Who are the data subjects\footnote{The data subjects are the individuals, groups, or organisations that the data is about. The data controllers can be the individuals, groups, or organisations that control (e.g. store, share, and release) the data. The data processors are the individuals, groups, or organisations that process (e.g., use) the data.}, data controllers, and data processors. How Long the data is controlled and processed by the controller and processor in the specific life cycle of data. How it is expected that the data to be used by receiving environment. The provenance graph should also be able to answer that What kind of data the data controller has about the data subjects, e.g. statistics, text and etc. At what level  of information the data provide about the data subjects e.g. microdata, aggregated and etc.  Does the provenance contains  the information of properties of the dataset are, e.g. age, quality, etc.  Further, the representation of data environment should contain information    Where the data is controlled, processed; When the data is deleted permanently by data controller or processor  and to what extent the data subjects are aware of data situation (i.e. controlling, processing, deleting involved in the data lifetime). 
+
+\subsection{Representation Requirements }
+\subsubsection{Data Environments in Data Environments}
+There are some use cases where we need to represent environments within an environment (i.e. nested environment). These data environments might contains other environments within it as illustrated in Fig.\ref{fig1}.  The main environment can also be called as global data environment, and this might contain many local environments. It would be the case that the nested data environment scenarios are managed by the same organisation. In nested data environment data can flows from global data environment to local or vice versa. 
+
+We may be able to represent nested data environments using bundles by differentiating with prefixes in the W3C PROV. Because the bundles can contain entities, activities, and agents which can be represented as data environment's elements. However, by using bundles and prefixes altogether cannot fulfil our nested data environment requirements in the use case scenarios when the data environments needs attributes attachment. Attributes attachment with the data environment is discussed in section \ref{sssec:attributes} .       
+%For example, a bundle can include agent, supplementary data, governance, and infrastructure %but it does not support  data environments in environments (i.e. bundle in a bundle).   
+\begin{figure}
+\includegraphics[width=\textwidth, height=5cm]{fig-1.png}
+\caption{Illustration of data environments in data environments} \label{fig1}
+\end{figure}
+
+\subsubsection{Attaching Attributes with the Data Environment}\label{sssec:attributes}
+In the data environment  “the set of all possible data that might be linked to a given dataset” based on the context in which any of data item exist \cite{elliot2010data}\cite{mackey2013understanding}. The data also flows from one data environment to another. These data environments may be within  in the same organisation or  from the different one. Attributes attachment with the data environments will help  in  tracing of data flows and  anonymisation decision. Additionally with the knowledge of attributes  user can be in a better position to decide whether the data environment is safe for sharing the data. Example of data environment  attributes can be  id of data environment, purpose of data environment, date of creation, type (e.g. government, commercial, etc.), access type (e.g. public, restricted), etc. Currently, we can not represent attributes attachment with the data environment using W3C PROV element bundle. Although we can represent data attributes attachment  through  collection and entities elements but again these elements doesn't provide the functionality of containing the data environment elements.      
+
+%\subsubsection{Representation of Similar Data and Infrastructure elements in multiple Data Environments}
+
+\subsubsection{Representation of Similar Entities  in multiple Data Environments}
+The multiple data environments might be connected in terms of data flows and might contain similar datasets and infrastructure elements. For example, the two organisations ( here we assumed that two organisations are represented as two data environments) have been assigned a task to conduct a clinical trials of a drug. Each organisation have performed similar tasks for the trials and the provenance of tasks are recorded. Also we assume that  organisation A and B’s environments contain a similar type of clinical trial dataset and these might be represented with the same name in two different environments.
+
+At the end of tasks the parent organisation wants to combine the collected provenance of both organisations. And the provenance of two data environments are represented within a single PROV document.  We also assume that organisations didn’t defined default prefixes of environments explicitly. In this situation, from the PROV enabled provenance we  could not be able to track the provenance of two similar things or objects in the data environments. This scenario is illustrated in Fig.\ref{fig2}. Where the  datasets and relevant processes are represented with entities and activities respectively and each data environment have been assigned a unique namespace. \begin{figure}
+\includegraphics{fig-2.png}
+\caption{Data environments scenario with similar entities} \label{fig2}
+\end{figure}
+\subsubsection{Semantic Annotation in Provenance Graph}
+The data environment representation will be in the form of provenance graph. A provenance graph enabled with the W3C PROV data model, consists nodes and edges that are labelled with properties based on the semantic relations among the nodes \cite{chan2019provmark}.  
+The W3C PROV properties' labels  are ambiguous and don’t denote the real meaning of  relationship between the nodes. Let us take an example of clinical trials data provenance. In which a dataset is developed and stored in the data centre (datacentre is a type of infrastructure in data environment's elements). In W3C PROV-DM the dataset and data centre are represented as entities. The “store” activity will link the dataset and datacentre entities by using “use” and “generated” properties as shown in Fig.\ref{fig3}. In this example, it is clear that PROV properties and edge labels are ambiguous if we use them to link the data environment’s elements. Currently, PROV neither support additional  names to the properties nor it provides the  mechanism for annotating the additional labels to relation edges in the data provenance graph.         
+
+\begin{figure}
+\centering
+\includegraphics{fig-3.png}
+\caption{Example of ambiguous properties labelling “use” and “generated” properties do not indicate the real meaning because it shows that “store” activity used the “trial\_data” entity to generate the “database\_server” entity. However, in real workflow trial\_data is stored in the database\_server through a storage process.} \label{fig3}
+\end{figure}
+
+\section{Approaches to Support Data Environment Requirements }\label{approaches}
+
+\subsection{Approaches}
+
+%\subsubsection{Attaching Attributes with the Data Environment}
+%In the data environment  “the set of all possible data that might be linked to a given dataset” based on the context in which any of data item exist \cite{elliot2010data}\cite{mackey2013understanding}. The data also flows from one data environment to another. These data environments may be within  in the same organisation or  from the different one. Attributes attachment with the data environments will help  in  tracing of data flows and  anonymisation decision. Additionally with the knowledge of attributes  user can be in a better position to decide whether the data environment is safe for sharing the data. Example of data environment  attributes can be  
+ %id of data environment, purpose of data environment, date of creation, type (e.g. government, commercial, etc.), access type (e.g. public, restricted), etc. In addition of attributes attachment, the  data environment should contain sub environments along with the core elements to full fill the who, why, what requirements presented in section %\ref{requirements}.     
+In order to meet the use case specific and general data environment representation requirements following approaches have been identified:
+
+The attributes can be  attached  with the data environment through two ways:
+
+\textbf{1. Using the existing PROV structure:} \\In PROV, the bundle concept is similar to the environment. Because a bundle can  represent data environment with its nature of provenance of provenance and representing of  data situation from bundle to bundle. We should extend PROV Bundle element by adding the functionality of attributes likely supported in entities and collections.
+
+\textbf{2. Introducing a dataEnvironment component:} \\ Another way is to add the new component (e.g. \textit{dataEnvironment}, \textit{endDataEnvironment}) for the data environment as a first class candidate in the PROV-DM  and develop a new layer over the bundle structure. Additionally, built a mechanism to include attributes, entities, activities, agents, etc in the data environment. In this approach, we can also reuse some of the bundles and entities existing mechanism.  
+
+The first option might not be a suitable due to the nested data environments requirement. Because bundle neither supports bundle in a bundle and nor it provides the functionality of attributes attachment with the data environments. Therefore, the second option might take extra efforts but it will enables the comprehensive representation of data environments features. The requirement of similar  entities in multiple data environments  is relatively is a modelling and validation issue. This can be resolved as: 
+\begin{itemize}
+\item Like in object-oriented programming a variable with the same name can be declared in the class and multiple methods. However, the scope of the variable is limited to the class and methods in which it was declared. 
+\item Similarly, there should be the support of multiple similar entities in multiple data environments within the same PROV document. And their scope should be limited to the data environment in which it is declared without explicitly indicating with prefixes.    
+\end{itemize}
+
+To resolve the issue of semantic annotation to properties two approaches can be possible. The first option is to  change non-semantic linking properties concepts and tags in the data model and change the labels for properties based on the application domain. The second option is to extend the mechanism of existing properties and introduce the "annotation to property" concept. We think that that the first option needs a continuous changes in the conceptual model and provenance document validation process because the properties concept and naming needs to be updated based on the use case. The second approach is suitable in the case of   data environment representation. Because all the existing properties and validation mechanism will be same, only the annotation attribute value will be updated based in the context of use case.     
+
+\subsection{PROV Extension to Support Data Environment Representation} 
+We extended PROV in two phases. In the first phase,  we defined the   concepts and terminologies of new candidate in PROV-DM, for example data environment component and the syntactic mechanism for attaching attributes. And the rules for provenance validation is enhanced in the second phase.
+%\subsubsection {Extension in PROV-DM:} 
+PROV-DM is the conceptual data model and core part of PROV that defines and describes each term used to represent the provenance information. Whatever terms and classes are described in PROV-DM are validated through PROV constraints (PROV-Constraints) \cite{PROV-constraints}.  PROV-DM  consist  six components: entities and activities, agents, bundles, collections, derivations and alternatives. Among them,  entities, and linking properties  are extended and a \textit{dataEnvironment} is added as a newly component. An example of newly component \textit{dataEnvironment} is shown in listing \ref{list-1}.
+
+\begin{table}\label{list-1}
+\begin{lstlisting}[ caption={Data Environment Component Example:  "Data Environment in Environment" and "Attribute Attachment with the Data Environment"  },label={list-1}, numbers=left]
+document
+  prefix EX-A <http://example-a.com>
+  prefix EX-B <http://example-b.com> 
+	dataEnvironment(EX-A:env-1, 
+	    [prov:envType="Government", prov:accessType="Public")
+            entity(clinicalTrialDataset)
+		dataEnvironment (EX-A:env-1a)
+		....
+		endDataEnvironment
+	endDataEnvironment
+  
+	dataEnvironment(EX-B:env-1, 
+	    [prov:envType="Non-Government", prov:accessType="Restrcited")
+          entity(clinicalTrialDataset)
+	endDataEnvironment
+  
+endDocument
+\end{lstlisting}
+\end{table}
+
+As shown in the listing lines 4-10 the newly added component \textit{dataEnvironment} in the PROV-DM  contains an other data environment and other elements entities, activities, etc. This also supports attributes, for example type of data environment is attached as:  (\textit {[prov:envType="Government",prov:accessType= "Public")]}), which was  not possible previously  through  bundle component in the W3C PROV. The nested data environment can contain as many environment as required by the use case. The listing \ref{list-1} also contain another main data environment from lines 12-15 with a distinguish attributes without any nested data environments.
+The listing at lines 6 and 14 shows two similar entities in the provenance document, However, the scope of these entities are limited with in the boundaries of respective data environments. These entities will be assigned identifier with respect to the related data environment and  cannot be merged by the PROV document validation process.
+
+To resolve the ambiguous labelling issues in  properties, we extended PROV relationship properties mechanism. We introduced the concept of annotation attachment with the property. An annotation attachment option is optional in the property and can be used if it is necessary to indicate the real meaning of elements relationship. For example we can attach annotation with \textit{wasGeneratedBy} property as \textit{wasGeneratedBy(entity, activity, -, [prov:annotation=” storedInDB”])}
+The listing  \ref{list-2} shows a  toy example of clinical trials representation in in which properties  annotation is used (see lines 12-13 and 23-24).
+\begin{table}
+\begin{lstlisting}[ caption={Example show the labelling to the linking properties},label={list-2}, numbers=left]
+document
+  prefix ORG1 <http://clinical-trials-handler.com/>
+  prefix ORG2 <http://clinical-data-handler.com/>
+  prefix foaf <http://xmlns.com/foaf/0.1/>
+  dataEnvironment(ORG1:env-1, 
+	    [prov:envType="Non-Government", prov:accessType="Restricted")
+    dataEnvironment (ORG1:env-1a,[prov:purpose="trials")
+        agent(ORG1:V1, [foaf:age="50", foaf:gender="male"])
+        agent(ORG1:V2, [foaf:age="70", foaf:gender="male"])
+        entity(ORG1:V1:placebo, [prov:label="placebo"])
+        entity(ORG1:vaccine, [prov:label="vaccine"])
+        wasInfluencedBy(ORG1:V1, ORG1:placebo,[prov:annotation="given"])
+        wasInfluencedBy(ORG1:V2, ORG1:vaccine,[prov:annotation="given"])
+        activity(ORG1:trials, 2020-06-01T13:00:00, 2020-06-15T12:59:00)
+    endDataEnvironment
+    
+    dataEnvironment (ORG2:env-1b,[prov:purpose="trials_data-management")
+        entity(ORG2:trials_data)
+        wasGeneratedBy(ORG2:trials_data, ORG1:trials,-)
+        entity(ORG2:database_server)
+        activity(ORG2:store, -, -)
+        used(ORG2:store, ORG2:trials_data, -)
+        wasGeneratedBy(ORG2:database_server,ORG2:store,-,
+        [prov:annotation="storage"])
+    endDataEnvironment
+  endDataEnvironment
+endDocument
+\end{lstlisting}
+\end{table}
+\section{Additional Requirements}
+Normally the human-readable provenance is written in PROV-N notations and this is popular in PROV beginners and quick starters. However, to professionally capture, translate, validate, visualize, and query the provenance data we need the PROV programming library..  Fortunately, the PROV community has provided open-source tools and libraries, the details can be found at \cite{OpenProvenanceTools}. Among them, two important PROV implementations are ProvToolbox and ProvPython. The ProvToolbox is the PROV’s java implementation and ProvPython is the Python implementation as indicated from its name. The source codes of two PROV libraries are openly available  \cite{OpenProvenanceTools} except for the PROV document validation mechanism. In the following sub-sections we will focus on the python library for  data environment representation because because it is currently, being updated regularly by the PROV community.      
+      
+
+
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+\end{document}
+
+
+
+%\begin{thebibliography}{8}
+%\bibitem{ref_article1}
+%Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+
+%\bibitem{ref_lncs1}
+%Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+%F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+%Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+
+%\bibitem{ref_book1}
+%Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+%Location (1999)
+
+%\bibitem{ref_proc1}
+%Author, A.-B.: Contribution title. In: 9th International Proceedings
+%on Proceedings, pp. 1--2. Publisher, Location (2010)
+
+%\bibitem{ref_url1}
+%LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
+%Oct 2017
+%\end{thebibliography}
